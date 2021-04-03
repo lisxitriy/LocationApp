@@ -45,11 +45,43 @@ class LocationDetailsViewController: UITableViewController {
         
         dateLabel.text = format(date: Date())
         
+//        скрываем клавиатуру
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        gestureRecognizer.cancelsTouchesInView = false
+        tableView.addGestureRecognizer(gestureRecognizer)
+        
     }
     
+    @objc func hideKeyboard(_ gestureRecognizer: UIGestureRecognizer) {
+        let point = gestureRecognizer.location(in: tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+        
+        if let indexPath = indexPath {
+          if  indexPath.section != 0 && indexPath.row != 0 {
+            descriptionTextView.resignFirstResponder()
+          }
+        } else {
+            descriptionTextView.resignFirstResponder()
+        }
+        
+       
+    }
     //MARK: - Actions
     @IBAction func done() {
-        navigationController?.popViewController(animated: true)
+//        navigationController?.popViewController(animated: true)
+        guard let mainView = navigationController?.parent?.view else { return }
+        let hudView = HudView.hud(inView: mainView, animated: true)
+        hudView.text = "Tagged"
+        
+//         чтобы закрыть экран через 6 секунд
+        
+        afterDelay(0.6) {
+            hudView.hide()
+            self.navigationController?.popViewController(animated: true)
+        }
+
+        
     }
     
     @IBAction func cancel() {
@@ -149,7 +181,25 @@ class LocationDetailsViewController: UITableViewController {
     }
     */
 
-
+    //MARK: - Table View Delegates
+    
+//    ограничиваем нажатие на ячейки только первыми двумя ячейками
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.row == 0 || indexPath.row == 1 {
+            return indexPath
+        } else {
+            return nil
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        если пользователь коснется первой строки первого раздела - строки с description text view  - тогда передаем фокус ввода text view
+        if indexPath.section == 0 && indexPath.row == 0 {
+            descriptionTextView.becomeFirstResponder()
+        }
+    }
+    
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

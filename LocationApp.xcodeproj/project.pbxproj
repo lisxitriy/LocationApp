@@ -16,6 +16,8 @@
 		D03C4C022610BEAC00066433 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03C4C002610BEAC00066433 /* LaunchScreen.storyboard */; };
 		D03C4C0E2613AA2600066433 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C4C0D2613AA2600066433 /* LocationDetailsViewController.swift */; };
 		D03C4C142618984300066433 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C4C132618984300066433 /* CategoryPickerViewController.swift */; };
+		D03C4C182618B0B300066433 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C4C172618B0B300066433 /* HudView.swift */; };
+		D03C4C1C2618EB3900066433 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C4C1B2618EB3900066433 /* Functions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		D03C4C032610BEAC00066433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D03C4C0D2613AA2600066433 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		D03C4C132618984300066433 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
+		D03C4C172618B0B300066433 /* HudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
+		D03C4C1B2618EB3900066433 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +71,13 @@
 				D03C4BF62610BEAA00066433 /* CurrentLocationViewController.swift */,
 				D03C4C0D2613AA2600066433 /* LocationDetailsViewController.swift */,
 				D03C4C132618984300066433 /* CategoryPickerViewController.swift */,
+				D03C4C172618B0B300066433 /* HudView.swift */,
 				D03C4BF82610BEAA00066433 /* Main.storyboard */,
 				D03C4BFE2610BEAC00066433 /* Assets.xcassets */,
 				D03C4C002610BEAC00066433 /* LaunchScreen.storyboard */,
 				D03C4C032610BEAC00066433 /* Info.plist */,
 				D03C4BFB2610BEAA00066433 /* LocationApp.xcdatamodeld */,
+				D03C4C1B2618EB3900066433 /* Functions.swift */,
 			);
 			path = LocationApp;
 			sourceTree = "<group>";
@@ -149,8 +155,10 @@
 				D03C4C142618984300066433 /* CategoryPickerViewController.swift in Sources */,
 				D03C4BF72610BEAA00066433 /* CurrentLocationViewController.swift in Sources */,
 				D03C4BF32610BEAA00066433 /* AppDelegate.swift in Sources */,
+				D03C4C1C2618EB3900066433 /* Functions.swift in Sources */,
 				D03C4BFD2610BEAA00066433 /* LocationApp.xcdatamodeld in Sources */,
 				D03C4BF52610BEAA00066433 /* SceneDelegate.swift in Sources */,
+				D03C4C182618B0B300066433 /* HudView.swift in Sources */,
 				D03C4C0E2613AA2600066433 /* LocationDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
