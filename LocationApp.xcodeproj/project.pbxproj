@@ -18,6 +18,8 @@
 		D03C4C142618984300066433 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C4C132618984300066433 /* CategoryPickerViewController.swift */; };
 		D03C4C182618B0B300066433 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C4C172618B0B300066433 /* HudView.swift */; };
 		D03C4C1C2618EB3900066433 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C4C1B2618EB3900066433 /* Functions.swift */; };
+		D03C4C20261A09CD00066433 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C4C1E261A09CD00066433 /* Location+CoreDataClass.swift */; };
+		D03C4C21261A09CD00066433 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C4C1F261A09CD00066433 /* Location+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		D03C4C132618984300066433 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		D03C4C172618B0B300066433 /* HudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		D03C4C1B2618EB3900066433 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		D03C4C1E261A09CD00066433 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D03C4C1F261A09CD00066433 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,8 @@
 		D03C4BE62610BEAA00066433 = {
 			isa = PBXGroup;
 			children = (
+				D03C4C1E261A09CD00066433 /* Location+CoreDataClass.swift */,
+				D03C4C1F261A09CD00066433 /* Location+CoreDataProperties.swift */,
 				D03C4BF12610BEAA00066433 /* LocationApp */,
 				D03C4BF02610BEAA00066433 /* Products */,
 			);
@@ -156,8 +162,10 @@
 				D03C4BF72610BEAA00066433 /* CurrentLocationViewController.swift in Sources */,
 				D03C4BF32610BEAA00066433 /* AppDelegate.swift in Sources */,
 				D03C4C1C2618EB3900066433 /* Functions.swift in Sources */,
+				D03C4C21261A09CD00066433 /* Location+CoreDataProperties.swift in Sources */,
 				D03C4BFD2610BEAA00066433 /* LocationApp.xcdatamodeld in Sources */,
 				D03C4BF52610BEAA00066433 /* SceneDelegate.swift in Sources */,
+				D03C4C20261A09CD00066433 /* Location+CoreDataClass.swift in Sources */,
 				D03C4C182618B0B300066433 /* HudView.swift in Sources */,
 				D03C4C0E2613AA2600066433 /* LocationDetailsViewController.swift in Sources */,
 			);
