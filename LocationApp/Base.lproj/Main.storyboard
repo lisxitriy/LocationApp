@@ -375,6 +375,80 @@
             </objects>
             <point key="canvasLocation" x="3412" y="74"/>
         </scene>
+        <!--Locations-->
+        <scene sceneID="3o5-ZF-wzM">
+            <objects>
+                <tableViewController id="E2b-j9-G8C" customClass="LocationsViewController" customModule="LocationApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uXg-KY-ehI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="65" id="Ifs-a9-b0A" customClass="LocationCell" customModule="LocationApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="65"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ifs-a9-b0A" id="zdX-aR-U51">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSo-34-vnx">
+                                            <rect key="frame" x="8" y="8" width="359" height="24"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMD-sq-UzR">
+                                            <rect key="frame" x="8" y="40" width="359" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="TMD-sq-UzR" secondAttribute="trailing" constant="8" id="CFV-eb-Uih"/>
+                                        <constraint firstItem="TMD-sq-UzR" firstAttribute="top" secondItem="hSo-34-vnx" secondAttribute="bottom" constant="8" id="O1Z-13-teL"/>
+                                        <constraint firstAttribute="trailing" secondItem="hSo-34-vnx" secondAttribute="trailing" constant="8" id="UDc-vc-Gbc"/>
+                                        <constraint firstItem="hSo-34-vnx" firstAttribute="top" secondItem="zdX-aR-U51" secondAttribute="top" constant="8" id="WcY-X5-U7J"/>
+                                        <constraint firstAttribute="bottom" secondItem="TMD-sq-UzR" secondAttribute="bottom" constant="8" id="Wha-Re-O8h"/>
+                                        <constraint firstItem="TMD-sq-UzR" firstAttribute="leading" secondItem="zdX-aR-U51" secondAttribute="leading" constant="8" id="vGj-Ft-jis"/>
+                                        <constraint firstItem="hSo-34-vnx" firstAttribute="leading" secondItem="zdX-aR-U51" secondAttribute="leading" constant="8" id="y4H-uR-WcP"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addressLabel" destination="TMD-sq-UzR" id="Unp-qw-U8C"/>
+                                    <outlet property="descriptionLabel" destination="hSo-34-vnx" id="Xwg-oc-oqE"/>
+                                    <segue destination="thz-zE-mgV" kind="show" identifier="EditLocation" id="scn-lU-JyZ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="E2b-j9-G8C" id="LQR-4b-pf4"/>
+                            <outlet property="delegate" destination="E2b-j9-G8C" id="lnA-xx-p6h"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Locations" id="A8Z-QQ-C7I"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UrA-PP-hMc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1896.8" y="815.44227886056979"/>
+        </scene>
+        <!--Locations-->
+        <scene sceneID="PEf-Tu-PSA">
+            <objects>
+                <navigationController id="caZ-Mc-cwC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Locations" id="Cai-cJ-QL9"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kKZ-Gw-8Bl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="E2b-j9-G8C" kind="relationship" relationship="rootViewController" id="N9W-fm-twz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wDs-vD-W8J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="730" y="817"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="iPN-05-C5M">
             <objects>
@@ -387,6 +461,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Ul6-7d-lQS" kind="relationship" relationship="viewControllers" id="Fa0-FD-2fp"/>
+                        <segue destination="caZ-Mc-cwC" kind="relationship" relationship="viewControllers" id="cM5-sm-xE9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JPK-kd-SfG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -413,6 +488,9 @@
             <point key="canvasLocation" x="959.20000000000005" y="74.212893553223395"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="scn-lU-JyZ"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
