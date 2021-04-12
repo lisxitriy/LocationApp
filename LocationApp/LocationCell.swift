@@ -11,7 +11,8 @@ class LocationCell: UITableViewCell {
     
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var addressLabel: UILabel!
-
+    @IBOutlet weak var photoImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,6 +24,13 @@ class LocationCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func thumbnail(for location: Location) -> UIImage {
+        if location.hasPhoto, let image = location.photoImage {
+            return image.resized(withBounds: CGSize(width: 52, height: 52))
+        }
+        
+        return UIImage()
+    }
     //MARK: - Helper Method
     
     func configure(for location: Location) {
@@ -47,6 +55,8 @@ class LocationCell: UITableViewCell {
             } else {
                 addressLabel.text = String(format: "Lat: %.8f, Long: %.8f", location.latitude, location.longitude)
             }
+        
+        photoImageView.image = thumbnail(for: location)
 
     }
 }

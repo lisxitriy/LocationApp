@@ -188,10 +188,20 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uvl-qx-PbR">
+                                                    <rect key="frame" x="112" y="10" width="228" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="HiM-IN-JFU"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="b78-Rh-QKj" firstAttribute="centerY" secondItem="Uvl-qx-PbR" secondAttribute="centerY" id="6bS-pV-MZZ"/>
                                                 <constraint firstItem="b78-Rh-QKj" firstAttribute="leading" secondItem="XKa-kq-pX1" secondAttribute="leadingMargin" id="G83-IP-l9a"/>
-                                                <constraint firstItem="b78-Rh-QKj" firstAttribute="centerY" secondItem="XKa-kq-pX1" secondAttribute="centerY" id="sXt-n3-y2P"/>
+                                                <constraint firstItem="Uvl-qx-PbR" firstAttribute="top" secondItem="XKa-kq-pX1" secondAttribute="top" constant="10" id="Iyd-Bm-4om"/>
+                                                <constraint firstAttribute="trailing" secondItem="Uvl-qx-PbR" secondAttribute="trailing" constant="8" id="WoS-i8-EVH"/>
+                                                <constraint firstAttribute="bottom" secondItem="Uvl-qx-PbR" secondAttribute="bottom" constant="10" id="jaJ-4u-x2c"/>
+                                                <constraint firstItem="Uvl-qx-PbR" firstAttribute="leading" secondItem="b78-Rh-QKj" secondAttribute="trailing" constant="16" id="oBT-LH-Dwu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -321,17 +331,20 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addPhotoLabel" destination="b78-Rh-QKj" id="Wnn-oN-ufh"/>
                         <outlet property="adressLabel" destination="yLX-SR-9xa" id="iOU-Ps-lzk"/>
                         <outlet property="categoryLabel" destination="OzT-6t-fKp" id="X78-6P-DY5"/>
                         <outlet property="dateLabel" destination="y3e-g9-AZ6" id="nNk-Yf-mkN"/>
                         <outlet property="descriptionTextView" destination="JJ8-3h-GZ9" id="Glc-Cy-p2X"/>
+                        <outlet property="imageHeight" destination="HiM-IN-JFU" id="vEp-kF-fEr"/>
+                        <outlet property="imageView" destination="Uvl-qx-PbR" id="sXu-Hn-leP"/>
                         <outlet property="latitudeLabel" destination="Wdi-Q5-laS" id="oPu-c5-6hV"/>
                         <outlet property="longitudeLabel" destination="9WQ-Hd-6zg" id="WZb-mm-GQr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgU-sC-wVG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2672" y="69"/>
+            <point key="canvasLocation" x="2671.1999999999998" y="68.815592203898049"/>
         </scene>
         <!--Category Picker View Controller-->
         <scene sceneID="FHW-Cy-gfj">
@@ -437,31 +450,45 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSo-34-vnx">
-                                            <rect key="frame" x="8" y="8" width="359" height="24"/>
+                                            <rect key="frame" x="76" y="8" width="291" height="24"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMD-sq-UzR">
-                                            <rect key="frame" x="8" y="40" width="359" height="17"/>
+                                            <rect key="frame" x="76" y="40" width="291" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fNA-wP-iZ4">
+                                            <rect key="frame" x="16" y="6" width="52" height="52"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="52" id="EkL-Xt-mND"/>
+                                                <constraint firstAttribute="width" constant="52" id="Hag-IR-mB3"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="TMD-sq-UzR" firstAttribute="leading" secondItem="fNA-wP-iZ4" secondAttribute="trailing" constant="8" id="27Y-vb-kcX"/>
                                         <constraint firstAttribute="trailing" secondItem="TMD-sq-UzR" secondAttribute="trailing" constant="8" id="CFV-eb-Uih"/>
+                                        <constraint firstItem="hSo-34-vnx" firstAttribute="leading" secondItem="fNA-wP-iZ4" secondAttribute="trailing" constant="8" symbolic="YES" id="DIz-QP-wtI"/>
+                                        <constraint firstItem="fNA-wP-iZ4" firstAttribute="leading" secondItem="zdX-aR-U51" secondAttribute="leading" constant="16" id="DnU-2D-SHY"/>
                                         <constraint firstItem="TMD-sq-UzR" firstAttribute="top" secondItem="hSo-34-vnx" secondAttribute="bottom" constant="8" id="O1Z-13-teL"/>
+                                        <constraint firstItem="fNA-wP-iZ4" firstAttribute="top" secondItem="zdX-aR-U51" secondAttribute="top" constant="6" id="SSc-c3-c0e"/>
                                         <constraint firstAttribute="trailing" secondItem="hSo-34-vnx" secondAttribute="trailing" constant="8" id="UDc-vc-Gbc"/>
                                         <constraint firstItem="hSo-34-vnx" firstAttribute="top" secondItem="zdX-aR-U51" secondAttribute="top" constant="8" id="WcY-X5-U7J"/>
                                         <constraint firstAttribute="bottom" secondItem="TMD-sq-UzR" secondAttribute="bottom" constant="8" id="Wha-Re-O8h"/>
-                                        <constraint firstItem="TMD-sq-UzR" firstAttribute="leading" secondItem="zdX-aR-U51" secondAttribute="leading" constant="8" id="vGj-Ft-jis"/>
-                                        <constraint firstItem="hSo-34-vnx" firstAttribute="leading" secondItem="zdX-aR-U51" secondAttribute="leading" constant="8" id="y4H-uR-WcP"/>
+                                        <constraint firstItem="fNA-wP-iZ4" firstAttribute="leading" secondItem="zdX-aR-U51" secondAttribute="leading" constant="16" id="clg-cd-V3N"/>
+                                        <constraint firstItem="hSo-34-vnx" firstAttribute="leading" secondItem="fNA-wP-iZ4" secondAttribute="trailing" constant="8" id="mpP-2Z-YQB"/>
+                                        <constraint firstAttribute="bottom" secondItem="fNA-wP-iZ4" secondAttribute="bottom" constant="7" id="peG-cn-rhm"/>
+                                        <constraint firstItem="fNA-wP-iZ4" firstAttribute="top" secondItem="zdX-aR-U51" secondAttribute="top" constant="6" id="xql-X9-Toe"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addressLabel" destination="TMD-sq-UzR" id="Unp-qw-U8C"/>
                                     <outlet property="descriptionLabel" destination="hSo-34-vnx" id="Xwg-oc-oqE"/>
+                                    <outlet property="photoImageView" destination="fNA-wP-iZ4" id="V1g-zj-AJJ"/>
                                     <segue destination="thz-zE-mgV" kind="show" identifier="EditLocation" id="scn-lU-JyZ"/>
                                 </connections>
                             </tableViewCell>
@@ -554,7 +581,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ew1-Vr-USu"/>
+        <segue reference="scn-lU-JyZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">

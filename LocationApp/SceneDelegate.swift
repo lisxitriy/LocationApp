@@ -71,7 +71,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
 //     код, который нужен для для загрузки модели данных и для подключения ее к хранилищу данных SQLite
     
-//    Создается экземпляр нового объекта NSPersistentContainer с именем модели данных. Затем мы указываем ему loadPersistentStores (), который загружает данные из базы данных в память и настраивает стек Core Data.
+//    Создается экземпляр нового объекта NSPersistentContainer с именем модели данных. Затем мы указываем ему loadPersistentStores(), который загружает данные из базы данных в память и настраивает стек Core Data.
 
     lazy var persistentContainer: NSPersistentContainer = {
         /*

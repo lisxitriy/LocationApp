@@ -21,6 +21,7 @@
 		D03C4C20261A09CD00066433 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C4C1E261A09CD00066433 /* Location+CoreDataClass.swift */; };
 		D03C4C21261A09CD00066433 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C4C1F261A09CD00066433 /* Location+CoreDataProperties.swift */; };
 		D056CA3D261CD464009BBC4A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056CA3C261CD464009BBC4A /* MapViewController.swift */; };
+		D056CA452624D8B8009BBC4A /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056CA442624D8B8009BBC4A /* UIImage+Resize.swift */; };
 		D0797A29261B7F3D00515781 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0797A28261B7F3D00515781 /* LocationViewController.swift */; };
 		D0797A2D261B89DC00515781 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0797A2C261B89DC00515781 /* LocationCell.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		D03C4C1E261A09CD00066433 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D03C4C1F261A09CD00066433 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D056CA3C261CD464009BBC4A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D056CA442624D8B8009BBC4A /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		D0797A28261B7F3D00515781 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		D0797A2C261B89DC00515781 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +95,7 @@
 				D03C4C032610BEAC00066433 /* Info.plist */,
 				D03C4BFB2610BEAA00066433 /* LocationApp.xcdatamodeld */,
 				D03C4C1B2618EB3900066433 /* Functions.swift */,
+				D056CA442624D8B8009BBC4A /* UIImage+Resize.swift */,
 			);
 			path = LocationApp;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				D03C4C21261A09CD00066433 /* Location+CoreDataProperties.swift in Sources */,
 				D0797A29261B7F3D00515781 /* LocationViewController.swift in Sources */,
 				D056CA3D261CD464009BBC4A /* MapViewController.swift in Sources */,
+				D056CA452624D8B8009BBC4A /* UIImage+Resize.swift in Sources */,
 				D0797A2D261B89DC00515781 /* LocationCell.swift in Sources */,
 				D03C4BFD2610BEAA00066433 /* LocationApp.xcdatamodeld in Sources */,
 				D03C4BF52610BEAA00066433 /* SceneDelegate.swift in Sources */,

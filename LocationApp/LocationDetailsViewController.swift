@@ -24,12 +24,17 @@ class LocationDetailsViewController: UITableViewController {
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var adressLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var addPhotoLabel: UILabel!
+    @IBOutlet weak var imageHeight: NSLayoutConstraint!
     
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var placemark: CLPlacemark?
     var categoryName = "No Category"
     var managedObjectContext: NSManagedObjectContext!
+    var image: UIImage?
     var date = Date()
+    var observer: Any!
     
     var locationToEdit: Location? {
 //        код в этом блоке выполняется всякий раз, когда мы вводим новое значение в эту переменную
@@ -50,6 +55,12 @@ class LocationDetailsViewController: UITableViewController {
         
         if let location = locationToEdit {
             title = "Edit Location"
+            
+            if location.hasPhoto {
+                if let theImage = location.photoImage {
+                    show(image: theImage)
+                }
+            }
         }
         descriptionTextView.text = descriptionText
         categoryLabel.text = categoryName
@@ -71,6 +82,7 @@ class LocationDetailsViewController: UITableViewController {
         gestureRecognizer.cancelsTouchesInView = false
         tableView.addGestureRecognizer(gestureRecognizer)
         
+        listenForBackgroundNotification()
     }
     
     @objc func hideKeyboard(_ gestureRecognizer: UIGestureRecognizer) {
@@ -102,6 +114,7 @@ class LocationDetailsViewController: UITableViewController {
         } else {
             hudView.text = "Tagged"
             location = Location(context: managedObjectContext)
+            location.photoID = nil
         }
         
         location.locationDescription = descriptionTextView.text
@@ -110,6 +123,25 @@ class LocationDetailsViewController: UITableViewController {
         location.longitude = coordinate.longitude
         location.date = date
         location.placemark = placemark
+        
+//        Сохраняем изображения
+        
+        if let image = image {
+            
+//  нам нужно получить новый идентификатор и назначить его свойству photoID для Location, если фотографии еще не было. Если фотография существует, сохраняем тот же идентификатор и перезаписываем существующий файл JPEG
+            if !location.hasPhoto {
+                location.photoID = Location.nextPhotoID() as NSNumber
+            }
+//  преобразуем UIImage в формат JPEG и возвращаем объект Data
+            if let data = image.jpegData(compressionQuality: 0.5) {
+//  пытаемся записать данные
+                do {
+                    try data.write(to: location.photoURL, options: .atomic)
+                } catch {
+                    print("Error writing file: \(error)")
+                }
+            }
+        }
         
         do {
             try managedObjectContext.save()
@@ -164,62 +196,33 @@ class LocationDetailsViewController: UITableViewController {
         return dateFormatter.string(from: date)
     }
     
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    func show(image: UIImage) {
+        imageView.image = image
+        imageView.isHidden = false
+        addPhotoLabel.text = ""
+        
+        imageHeight.constant = 260
+        tableView.reloadData()
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+//    Когда приложение переходит в фоновый режим, оно должно закрывать лист действий, если он отображается в данный момент.то же самое для средства выбора изображений
+    func listenForBackgroundNotification() {
+        observer = NotificationCenter.default.addObserver(forName: UIScene.didEnterBackgroundNotification, object: nil, queue: OperationQueue.main) { [weak self] _ in
+            if let weakSelf = self {
+                if weakSelf.presentedViewController != nil {
+                    weakSelf.dismiss(animated: false, completion: nil)
+                }
+                    weakSelf.descriptionTextView.resignFirstResponder()
+            }
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+//    начиная с iOS 9.0 и выше, если явно не удалять наблюдателя, система обработает это самостоятельно и автоматически удалит наблюдателя, когда контроллер представления будет освобожден. но просто для тренировки и наглядности это здесь есть)
+    
+    deinit {
+      print("*** deinit \(self)")
+      NotificationCenter.default.removeObserver(observer!)
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     //MARK: - Table View Delegates
     
@@ -233,9 +236,16 @@ class LocationDetailsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
 //        если пользователь коснется первой строки первого раздела - строки с description text view  - тогда передаем фокус ввода text view
         if indexPath.section == 0 && indexPath.row == 0 {
             descriptionTextView.becomeFirstResponder()
+        } else if indexPath.section == 1 && indexPath.row == 0 {
+//            takePhotoWithCamera()
+//            choosePhotoFromLibrary()
+            pickPhoto()
         }
     }
     
@@ -249,5 +259,72 @@ class LocationDetailsViewController: UITableViewController {
         }
     }
 
+
+}
+
+
+extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    //MARK: - Image Helper Methods
+    
+    func takePhotoWithCamera() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func choosePhotoFromLibrary() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func pickPhoto() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            showPhotoMenu()
+        } else {
+            choosePhotoFromLibrary()
+        }
+    }
+    
+    func showPhotoMenu() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let actCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(actCancel)
+        
+        let actPhoto = UIAlertAction(title: "Take Photo", style: .default) { _ in
+            self.takePhotoWithCamera()
+        }
+        alert.addAction(actPhoto)
+        
+        let actLibrary = UIAlertAction(title: "Choose From Lobrary", style: .default) { _ in
+            self.choosePhotoFromLibrary()
+        }
+        alert.addAction(actLibrary)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    //MARK: - Image Picker Delegates
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        //можно переписать через didSet
+        image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+        if let theImage = image {
+            show(image: theImage)
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 
 }
