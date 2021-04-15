@@ -22,6 +22,8 @@
 		D03C4C21261A09CD00066433 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C4C1F261A09CD00066433 /* Location+CoreDataProperties.swift */; };
 		D056CA3D261CD464009BBC4A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056CA3C261CD464009BBC4A /* MapViewController.swift */; };
 		D056CA452624D8B8009BBC4A /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056CA442624D8B8009BBC4A /* UIImage+Resize.swift */; };
+		D056CA482626163D009BBC4A /* String+AddText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056CA472626163D009BBC4A /* String+AddText.swift */; };
+		D056CA512628D587009BBC4A /* Sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = D056CA502628D587009BBC4A /* Sound.caf */; };
 		D0797A29261B7F3D00515781 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0797A28261B7F3D00515781 /* LocationViewController.swift */; };
 		D0797A2D261B89DC00515781 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0797A2C261B89DC00515781 /* LocationCell.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +46,8 @@
 		D03C4C1F261A09CD00066433 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D056CA3C261CD464009BBC4A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D056CA442624D8B8009BBC4A /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		D056CA472626163D009BBC4A /* String+AddText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AddText.swift"; sourceTree = "<group>"; };
+		D056CA502628D587009BBC4A /* Sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound.caf; sourceTree = "<group>"; };
 		D0797A28261B7F3D00515781 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		D0797A2C261B89DC00515781 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +84,7 @@
 		D03C4BF12610BEAA00066433 /* LocationApp */ = {
 			isa = PBXGroup;
 			children = (
+				D056CA4F2628D587009BBC4A /* Sound */,
 				D03C4BF22610BEAA00066433 /* AppDelegate.swift */,
 				D03C4BF42610BEAA00066433 /* SceneDelegate.swift */,
 				D03C4BF62610BEAA00066433 /* CurrentLocationViewController.swift */,
@@ -89,15 +94,24 @@
 				D03C4C172618B0B300066433 /* HudView.swift */,
 				D0797A2C261B89DC00515781 /* LocationCell.swift */,
 				D056CA3C261CD464009BBC4A /* MapViewController.swift */,
+				D056CA442624D8B8009BBC4A /* UIImage+Resize.swift */,
+				D03C4C1B2618EB3900066433 /* Functions.swift */,
+				D056CA472626163D009BBC4A /* String+AddText.swift */,
 				D03C4BF82610BEAA00066433 /* Main.storyboard */,
-				D03C4BFE2610BEAC00066433 /* Assets.xcassets */,
 				D03C4C002610BEAC00066433 /* LaunchScreen.storyboard */,
+				D03C4BFE2610BEAC00066433 /* Assets.xcassets */,
 				D03C4C032610BEAC00066433 /* Info.plist */,
 				D03C4BFB2610BEAA00066433 /* LocationApp.xcdatamodeld */,
-				D03C4C1B2618EB3900066433 /* Functions.swift */,
-				D056CA442624D8B8009BBC4A /* UIImage+Resize.swift */,
 			);
 			path = LocationApp;
+			sourceTree = "<group>";
+		};
+		D056CA4F2628D587009BBC4A /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				D056CA502628D587009BBC4A /* Sound.caf */,
+			);
+			path = Sound;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,6 +173,7 @@
 			files = (
 				D03C4C022610BEAC00066433 /* LaunchScreen.storyboard in Resources */,
 				D03C4BFF2610BEAC00066433 /* Assets.xcassets in Resources */,
+				D056CA512628D587009BBC4A /* Sound.caf in Resources */,
 				D03C4BFA2610BEAA00066433 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,6 +197,7 @@
 				D03C4BFD2610BEAA00066433 /* LocationApp.xcdatamodeld in Sources */,
 				D03C4BF52610BEAA00066433 /* SceneDelegate.swift in Sources */,
 				D03C4C20261A09CD00066433 /* Location+CoreDataClass.swift in Sources */,
+				D056CA482626163D009BBC4A /* String+AddText.swift in Sources */,
 				D03C4C182618B0B300066433 /* HudView.swift in Sources */,
 				D03C4C0E2613AA2600066433 /* LocationDetailsViewController.swift in Sources */,
 			);
@@ -332,6 +348,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = LocationApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -350,6 +367,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = LocationApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

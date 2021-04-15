@@ -63,7 +63,7 @@ class MapViewController: UIViewController {
 //            две и больше аннотаций, рассчитываем степень их досягаемости и добавляем немного отступов
         default:
             var topLeft = CLLocationCoordinate2D(latitude: -90, longitude: 180)
-            var bottomRight = CLLocationCoordinate2D(latitude: 90, longitude: -180)
+            let bottomRight = CLLocationCoordinate2D(latitude: 90, longitude: -180)
             
             for annotation in annotations {
                 topLeft.latitude = max(topLeft.latitude, annotation.coordinate.latitude)
